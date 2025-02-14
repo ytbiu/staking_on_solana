@@ -18,4 +18,20 @@ pub mod machine_staking {
     pub fn initialize(ctx: Context<Initialize>, reward_amount: u64) -> Result<()> {
         initialize::init(ctx, reward_amount)
     }
+
+    pub fn user_stake(
+        ctx: Context<Stake>,
+        machine_id: String,
+        staked_token_amount: u64,
+        staked_nft_amount: u64,
+        stake_seconds: i64,
+    ) -> Result<()> {
+        staking::stake(
+            ctx,
+            machine_id,
+            staked_token_amount,
+            staked_nft_amount,
+            stake_seconds,
+        )
+    }
 }
