@@ -34,4 +34,25 @@ pub mod machine_staking {
             stake_seconds,
         )
     }
+
+    pub fn user_unstake(ctx: Context<EndStake>) -> Result<()> {
+        staking::end_stake(ctx)
+    }
+
+    pub fn user_claim(ctx: Context<Claim>) -> Result<()> {
+        staking::claim(ctx)
+    }
+
+    pub fn renter_rent_machine(
+        ctx: Context<RentMachine>,
+        machine_id: String,
+        rent_seconds: i64,
+        rent_fee: u64,
+    ) -> Result<()> {
+        renting::rent_machine(ctx, machine_id, rent_seconds, rent_fee)
+    }
+
+    pub fn renter_end_rent_machine(ctx: Context<RentMachine>, machine_id: String) -> Result<()> {
+        renting::end_rent_machine(ctx, machine_id)
+    }
 }
